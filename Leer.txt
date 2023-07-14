@@ -1,0 +1,5 @@
+Hola Profesor, muchas gracias por la retroalimentación, 
+a su comentario sobre el carro de compras, mi idea era resolverlo con 
+el local storage, pero le entiendo que debería pasar por base de datos, ideal 
+si me puede orientar un poco con eso.
+Muchas gracias, saludos.
