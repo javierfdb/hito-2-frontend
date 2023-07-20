@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from "react";
 import { useState } from "react";
 import {createContext} from "react";
@@ -25,19 +26,23 @@ const TiendaProvider = ({children}) => {
     const getUserProfile = async (accessToken) => {
         try {
             setLoading(true);
-          const res = await fetch(import.meta.env.VITE_API_URL + "/auth/profile", {
+          const res = await fetch(import.meta.env.VITE_API_URL + "/dashboard", {
               method: "GET",
               headers: {
                   Authorization: `Bearer ${accessToken}`,
               },
           });
-          const data = await res.json();
-          setUser(data);  
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoading(false);
-        }
+    
+        const data = await res.json();
+        
+        setUser(data);  
+        // console.log("data: ", data);
+        // console.log("user: ", user);
+      } catch (error) {
+          console.log(error);
+      } finally {
+          setLoading(false);
+      }
     }
 
     const saveToken = (accessToken) => {
@@ -46,7 +51,7 @@ const TiendaProvider = ({children}) => {
     }
 
     const logout = () => {
-        setUser(false);
+        setUser();
         setToken(null);        
         localStorage.removeItem('token');
         Navigate("/Home");
