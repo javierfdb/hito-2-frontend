@@ -1,7 +1,5 @@
 import React from 'react';
-import { useEffect } from "react";
-import { useState } from "react";
-import {createContext} from "react";
+import { useEffect, useState, createContext } from "react";
 import {Navigate} from 'react-router-dom'
 
 
@@ -14,6 +12,24 @@ const TiendaProvider = ({children}) => {
     const [token, setToken] = useState(initialStateToken);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [productos, setProductos] = useState([]);
+
+    // const Navigate = useNavigate();
+
+    const getProductos = async () => {
+        try {
+            const url = 'http://localhost:5000/caca';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getProductos();
+    }, []);
 
     useEffect(() => {
         if(token){
@@ -58,7 +74,7 @@ const TiendaProvider = ({children}) => {
     }
 
     return (
-        <TiendaContext.Provider value={{saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
+        <TiendaContext.Provider value={{productos, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
             {children}
         </TiendaContext.Provider>
     )
