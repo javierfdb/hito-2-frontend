@@ -1,10 +1,12 @@
 import React, { Component, useContext} from 'react';
-import { TiendaContext } from '../context/TiendaContext';
 import Banner from "../components/Banner";
+import { TiendaContext } from "../context/TiendaContext";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Dashboard() {
-    const {user} = useContext(TiendaContext);
+
+    const {saveToken, getUserProfile, loading, setLoading, user } = useContext(TiendaContext);
     // console.log("user: ", user);
     // console.log("user-detail: ", user[0].email);
     return (
