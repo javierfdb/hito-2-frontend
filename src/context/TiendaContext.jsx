@@ -16,6 +16,8 @@ export default function TiendaProvider  ({children})  {
     const [loading, setLoading] = useState(false);
     const [productos, setProductos] = useState([]);
     const [singleproduct, setSingle] = useState([]);
+    const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('ppsCarrito')) || [] );
+    const [like, setLike] = useState(JSON.parse(localStorage.getItem('ppsLike')) || [] );
 
     const getProductos = async () => {
         try {
@@ -40,9 +42,17 @@ export default function TiendaProvider  ({children})  {
         }
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem('ppsCarrito', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+    useEffect(() => {
+        localStorage.setItem('ppsLike', JSON.stringify(like));
+    }, [like]);
+
+    const totalPrice = cartItems.reduce((total, item) => total + item.precio, 0);
+
     const handleDetalle = async (id) => {
-        
-        console.log("desde hd", id);
         try {
             const url = import.meta.env.VITE_API_URL + '/detalle/'+ id;
             const response = await fetch(url)
@@ -85,8 +95,84 @@ export default function TiendaProvider  ({children})  {
         navigate("/");
     }
 
+    const handleDetallito = (id, imagen, titulo, descripcion, precio, cantidad) => {
+        if (cartItems.some((item) => id == item.id)) {
+            alert('Producto ya agregado');
+        } else {
+            // correccion error raro
+            const newBuenoWorker = {
+                id: id,
+                imagen: imagen,
+                titulo: titulo,
+                precio: precio,
+                cantidad: 1
+               }
+               setCartItems([...cartItems, newBuenoWorker]);
+            const totalPrice = cartItems.reduce((total, item) => total + item.precio, 0);
+            alert('Producto agregado con éxito');
+        }
+    }
+
+    const handleSumar = (id, imagen, titulo, descripcion, precio, cantidad) => {
+        const nuevoCarrito = cartItems.map(producto => {
+            if (producto.id === id) {
+              return { ...producto, cantidad: producto.cantidad + 1, precio: producto.precio + precio/cantidad};
+            }
+            return producto;
+          });
+          
+          setCartItems(nuevoCarrito);
+    }   
+
+    const handleRestar = (id, imagen, titulo, descripcion, precio, cantidad) => {
+        const nuevoCarrito = cartItems.map(producto => {
+            if (producto.id === id) {
+                const nuevaCantidad = producto.cantidad - 1 < 1 ? 1 : producto.cantidad - 1;
+                return { ...producto, cantidad: nuevaCantidad, precio: producto.precio - precio/cantidad};
+            } 
+            return producto;
+          });
+          
+          setCartItems(nuevoCarrito);
+    }
+    
+    const handleDelete = (id, imagen, titulo, descripcion, precio, cantidad) => {
+        const nuevoArray = cartItems.filter((item) => id !== item.id)  
+        setCartItems(nuevoArray);
+    }; 
+
+    const handleAlerta= () => {
+        alert('Debes iniciar sesión CTM')
+    }; 
+
+    const handleLike = (id, imagen, titulo, descripcion, precio, meGusta) => {
+        if (like.some((item) => id == item.id)) {
+            alert('Producto ya agregado');
+        } else {
+            // correccion error raro
+            const newLike = {
+                id: id,
+                imagen: imagen,
+                titulo: titulo,
+                precio: precio,
+                meGusta: true
+               }
+
+               setLike([...like, newLike]);
+            
+            
+        }
+    }
+
+   
+
+    const handleDislike = (id, imagen, titulo, descripcion, precio, meGusta) => {
+        const nuevoLike = like.filter((item) => id !== item.id)  
+        setLike(nuevoLike);
+    }; 
+
     return (
-        <TiendaContext.Provider value={{singleproduct, productos, handleDetalle:handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
+        <TiendaContext.Provider value={{handleDislike , like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle:handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
             {children}
         </TiendaContext.Provider>
     )

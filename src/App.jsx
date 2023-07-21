@@ -9,8 +9,12 @@ import Tienda from './pages/Tienda';
 import Detalle from './pages/Detalle';
 import Ingresar from './pages/Ingresar';
 import Registro from './pages/Registro';
+import Carrito from './pages/Carrito';
 import NotFound from './pages/NotFound';
 import Dashboard from './pages/Dashboard';
+import MisMeGusta from './pages/MisMeGusta';
+import MisPublicaciones from './pages/MisPublicaciones';
+import Publicar from './pages/Publicar';
 import { TiendaContext } from './context/TiendaContext';
 
 
@@ -29,7 +33,11 @@ import { TiendaContext } from './context/TiendaContext';
             <Route path='/detalle/:id' element={<Detalle/>}/>
             <Route path='/ingresar' element={<Ingresar/>}/>
             <Route path='/registro' element={<Registro/>}/>
+            <Route path='/carrito' element={<Carrito/>} />
             <Route path='/dashboard' element={ user ? <Dashboard/> : <Navigate to="/ingresar" />}/>
+            <Route path='/dashboard/mis-me-gusta' element={ user ? <MisMeGusta/> : <Navigate to="/ingresar" />}/>
+            <Route path='/dashboard/mis-publicaciones' element={ user ? <MisPublicaciones/> : <Navigate to="/ingresar" />}/>
+            <Route path='/dashboard/publicar' element={ user ? <Publicar/> : <Navigate to="/ingresar" />}/>
             <Route path='*' element={<NotFound/>}/>
           </Routes>
         <Footer/>

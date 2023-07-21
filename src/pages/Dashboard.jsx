@@ -2,6 +2,7 @@ import React, { Component, useContext} from 'react';
 import Banner from "../components/Banner";
 import { TiendaContext } from "../context/TiendaContext";
 import { useNavigate } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 
 export default function Dashboard() {
@@ -19,23 +20,22 @@ export default function Dashboard() {
             </div>
         </section>
 
-        <section className='perfil'>
-            <div className="container">
-                <div className="row justify-content-center my-5">
-                    <div className="col-lg-6 d-flex justify-content-center">
-                    <div className="card" style={{ width: '18rem' }}>
-                        {/* <img src={user.avatar} className="card-img-top" alt="avatar usuario"/> */}
-                        <img  className="card-img-top" alt="avatar usuario"/>
-                        <div className="card-body">
-                        <h5 className="card-title text-center">{user.email}</h5>
-                        {/* <p className="card-text">{user.role}</p> */}
-                        <p className="card-text"></p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+        <div className="container">
+            <div className="row my-5">
+            <div className="col-lg-2 cont-nav-dash">
+            <NavLink to="/dashboard" className="nav-link this-dash">Mi perfil</NavLink>
+            <NavLink to="/dashboard/mis-me-gusta" className="nav-link">Mis Me Gusta</NavLink>
+            <NavLink to="/dashboard/mis-publicaciones" className="nav-link">Mis publicaciones</NavLink>
+            <NavLink to="/dashboard/publicar" className="nav-link">Publicar</NavLink>
             </div>
-        </section> 
+            <div className="col-lg-10">
+            <div className="row">
+                <h2>{user[0].email}</h2>
+            </div>
+            </div>
+            </div>
+        
+        </div>
 
         </>
     )

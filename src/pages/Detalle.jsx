@@ -5,7 +5,7 @@ import { TiendaContext } from '../context/TiendaContext'
 
 
 export default function Detalle() {
-    const {singleproduct} = useContext(TiendaContext);
+    const {singleproduct, handleDetallito, user, handleAlerta, handleLike} = useContext(TiendaContext);
     
     return (
         
@@ -16,7 +16,7 @@ export default function Detalle() {
 	<div className="container">
 		
 			{singleproduct.map((item) => {
-            const {id,titulo,descripcion,precio, imagen} = item;
+            const {id, imagen, titulo, descripcion, precio } = item;
             return <div className="row mt-5 mb-4" key={id}>
             	<div  className="col-lg-4 mb-0">
             	            			<div className="card">
@@ -33,7 +33,11 @@ export default function Detalle() {
             				        	        <p className="card-text">{descripcion}</p>
             				        	        <h4 className="precio">${precio}</h4>
             				        	        <div className="box-btn-comprar">
-            				        	            <button  className='btn btn-comprar'><i class="fas fa-cart-plus"></i> Agregar</button>
+
+            				        	         { !user ?  <button onClick={() => handleAlerta()}  className='btn btn-comprar'><i class="fas fa-cart-plus"></i> Agregar</button>  : <button onClick={() => handleDetallito(id, imagen, titulo, descripcion, precio)} className='btn btn-comprar'><i class="fas fa-cart-plus"></i> Agregar</button> }
+
+                                                 <button onClick={() => handleLike(id, imagen, titulo, descripcion, precio)} className='btn btn-comprar'><i class="fas fa-cart-plus"></i> like</button>
+
             				        	        </div>
             				        	    </div>
             				        	</div>

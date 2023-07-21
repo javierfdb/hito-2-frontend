@@ -5,7 +5,8 @@ import { TiendaContext } from "../context/TiendaContext";
 
 
 export default function Header() {
-    const { user, logout } = useContext(TiendaContext);
+    const { user, logout, cartItems } = useContext(TiendaContext);
+    const numberOfObjects = cartItems.length;
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,6 +37,20 @@ export default function Header() {
                         <li className="nav-item">
                         <NavLink to="/tienda" className="nav-link">Tienda</NavLink>
                         </li>
+
+                        {!user ? (<></>) : (<>
+
+                        <li className="nav-item">
+                        <NavLink to="/carrito" className="nav-link">Carrito 
+                        {!numberOfObjects > 0 ? (
+                            <span></span>
+                        ) : (
+                            <span className='carrito-cantidad'> {numberOfObjects}</span>
+                        )}
+                        </NavLink>
+                        </li>
+
+                        </>)}
                         
                         {!user ? (<></>) : (<>
                             

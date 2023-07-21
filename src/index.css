@@ -256,6 +256,19 @@ header a.btn-logout {
   align-items: flex-end;
 }
 
+.box-svg:hover {
+  cursor: pointer;
+}
+
+.cont-nav-dash a.this-dash {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.cont-nav-dash a {
+  margin-bottom: .5rem;
+}
+
 /* MEDIAS */
 
 @media screen and (min-width: 991px) {

@@ -27,8 +27,6 @@ export default function Registro() {
                 }),
             });
             const data = await res.json();
-            // console.log("solo data: ", data); 
-            // console.log("access_token: ", data.token); 
             saveToken(data.token);
             await getUserProfile(data.token); 
             navigate("/dashboard");
