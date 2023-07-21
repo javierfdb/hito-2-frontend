@@ -19,7 +19,7 @@ export default function TiendaProvider  ({children})  {
 
     const getProductos = async () => {
         try {
-            const url = 'http://localhost:5000/caca';
+            const url = import.meta.env.VITE_API_URL + '/tienda';
             const response = await fetch(url)
             const allProductos = await response.json();
             setProductos(allProductos);
@@ -44,19 +44,14 @@ export default function TiendaProvider  ({children})  {
         
         console.log("desde hd", id);
         try {
-            const url = 'http://localhost:5000/caca/'+ id;
+            const url = import.meta.env.VITE_API_URL + '/detalle/'+ id;
             const response = await fetch(url)
             const detailProducto = await response.json();
             setSingle(detailProducto);
-            console.log(detailProducto);
-            console.log("url: ", url);
-            
-            
         } catch (error) {
             console.log(error)
         }
         navigate('/detalle/'+ id);
-        console.log("afuera");
     };
 
     const getUserProfile = async (accessToken) => {
@@ -70,10 +65,7 @@ export default function TiendaProvider  ({children})  {
           });
     
         const data = await res.json();
-        
         setUser(data);  
-        // console.log("data: ", data);
-        // console.log("user: ", user);
       } catch (error) {
           console.log(error);
       } finally {
@@ -90,7 +82,7 @@ export default function TiendaProvider  ({children})  {
         setUser();
         setToken(null);        
         localStorage.removeItem('token');
-        // Navigate("/Home");
+        navigate("/");
     }
 
     return (
