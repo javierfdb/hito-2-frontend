@@ -1,17 +1,17 @@
 import React from 'react';
 import Banner from "../components/Banner";
 import { useContext } from 'react';
-import { TiendaContext } from '../context/TiendaContext'
+import { TiendaContext } from '../context/TiendaContext';
+
 
 
 export default function Tienda() {
-    const {productos} = useContext(TiendaContext);
+    const {productos, handleDetalle} = useContext(TiendaContext);
     
     return (
         
         <>
         <Banner url="/images/banner-home.png" texto="Tienda"/>
-        {console.log("pro desde tienda :", productos)}
             <section className="productos">
                 <div className="container">
                     <div className="row my-5">
@@ -57,7 +57,7 @@ export default function Tienda() {
                                                     <p className="card-text">{descripcion}</p>
                                                     <h4 className="precio">{precio}</h4>
                                                     <div className="box-btn-comprar">
-                                                        <a href="#" className="btn btn-comprar">Comprar</a>
+                                                        <button onClick={() => handleDetalle(id)} className='btn btn-comprar'>Ver más</button>
                                                     </div>
                                                 </div>
                                             </div>

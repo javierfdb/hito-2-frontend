@@ -11,12 +11,11 @@ import TiendaProvider from './context/TiendaContext.jsx';
 import CssBaseline from '@mui/material/CssBaseline';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
+  <BrowserRouter>
     <TiendaProvider>
-      <BrowserRouter>
         <CssBaseline />   
           <App />
-      </BrowserRouter>
     </TiendaProvider>
+  </BrowserRouter>
   
 )

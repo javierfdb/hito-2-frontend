@@ -239,6 +239,23 @@ header a.btn-logout {
   width: 100%;
 }
 
+.productos.detalle .card {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.productos.detalle .card figure {
+  margin-bottom: 0px;
+}
+
+.productos.detalle .card figure {
+  margin-bottom: 0px;
+}
+
+.productos.detalle .row {
+  align-items: flex-end;
+}
+
 /* MEDIAS */
 
 @media screen and (min-width: 991px) {

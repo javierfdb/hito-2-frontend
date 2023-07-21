@@ -1,20 +1,21 @@
 import React from 'react';
 import { useEffect, useState, createContext } from "react";
-import {Navigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 
 export const TiendaContext = createContext();
 
 const initialStateToken = localStorage.getItem("token"); // esto siempre debe estar por fuera del 'tienda provider'
 
-const TiendaProvider = ({children}) => {
+export default function TiendaProvider  ({children})  {
+
+    const navigate = useNavigate();
 
     const [token, setToken] = useState(initialStateToken);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
     const [productos, setProductos] = useState([]);
-
-    // const Navigate = useNavigate();
+    const [singleproduct, setSingle] = useState([]);
 
     const getProductos = async () => {
         try {
@@ -38,6 +39,25 @@ const TiendaProvider = ({children}) => {
             setUser(false);
         }
     }, []);
+
+    const handleDetalle = async (id) => {
+        
+        console.log("desde hd", id);
+        try {
+            const url = 'http://localhost:5000/caca/'+ id;
+            const response = await fetch(url)
+            const detailProducto = await response.json();
+            setSingle(detailProducto);
+            console.log(detailProducto);
+            console.log("url: ", url);
+            
+            
+        } catch (error) {
+            console.log(error)
+        }
+        navigate('/detalle/'+ id);
+        console.log("afuera");
+    };
 
     const getUserProfile = async (accessToken) => {
         try {
@@ -70,14 +90,13 @@ const TiendaProvider = ({children}) => {
         setUser();
         setToken(null);        
         localStorage.removeItem('token');
-        Navigate("/Home");
+        // Navigate("/Home");
     }
 
     return (
-        <TiendaContext.Provider value={{productos, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
+        <TiendaContext.Provider value={{singleproduct, productos, handleDetalle:handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
             {children}
         </TiendaContext.Provider>
     )
 }
 
-export default TiendaProvider;
