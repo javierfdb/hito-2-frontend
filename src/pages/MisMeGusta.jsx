@@ -17,7 +17,6 @@ export default function MisMeGusta() {
                 <NavLink to="/dashboard/mis-me-gusta" className="nav-link this-dash">Mis Me Gusta</NavLink>
                 <NavLink to="/dashboard/mis-publicaciones" className="nav-link">Mis publicaciones</NavLink>
                 <NavLink to="/dashboard/publicar" className="nav-link">Publicar</NavLink>
-                <p>Publicar</p>
             </div>
             <div className="col-lg-10">
             <div className="row">

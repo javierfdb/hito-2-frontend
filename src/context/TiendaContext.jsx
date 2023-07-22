@@ -15,6 +15,7 @@ export default function TiendaProvider  ({children})  {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
     const [productos, setProductos] = useState([]);
+    const [publicaciones, setPublicaciones] = useState([]);
     const [singleproduct, setSingle] = useState([]);
     const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('ppsCarrito')) || [] );
     const [like, setLike] = useState(JSON.parse(localStorage.getItem('ppsLike')) || [] );
@@ -32,6 +33,30 @@ export default function TiendaProvider  ({children})  {
 
     useEffect(() => {
         getProductos();
+    }, []);
+
+    const getMisPublicaciones = async () => {
+        try {
+
+            const res  = await fetch (`${import.meta.env.VITE_API_URL}/dashboard/mis-publicaciones`,{
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            
+            const publicacionesPropias = await res.json();
+            setPublicaciones(publicacionesPropias);
+           
+           console.log("this: ", token);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getMisPublicaciones();
     }, []);
 
     useEffect(() => {
@@ -164,15 +189,13 @@ export default function TiendaProvider  ({children})  {
         }
     }
 
-   
-
     const handleDislike = (id, imagen, titulo, descripcion, precio, meGusta) => {
         const nuevoLike = like.filter((item) => id !== item.id)  
         setLike(nuevoLike);
     }; 
 
     return (
-        <TiendaContext.Provider value={{handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
+        <TiendaContext.Provider value={{publicaciones, handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
             {children}
         </TiendaContext.Provider>
     )
