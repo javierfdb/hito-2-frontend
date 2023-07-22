@@ -1,11 +1,18 @@
 import React from 'react';
+import { Button } from "@mui/material";
 import Banner from "../components/Banner";
 import { useContext } from 'react';
 import { TiendaContext } from '../context/TiendaContext'
 
+import { useSnackbar } from 'notistack';
+
 
 export default function Detalle() {
-    const {singleproduct, handleDetallito, user, handleAlerta, handleLike} = useContext(TiendaContext);
+	
+    const { singleproduct, handleDetallito, user, handleAlerta, handleLike} = useContext(TiendaContext);
+
+
+	
     
     return (
         
@@ -34,9 +41,9 @@ export default function Detalle() {
             				        	        <h4 className="precio">${precio}</h4>
             				        	        <div className="box-btn-comprar">
 
-            				        	         { !user ?  <button onClick={() => handleAlerta()}  className='btn btn-comprar'><i class="fas fa-cart-plus"></i> Agregar</button>  : <button onClick={() => handleDetallito(id, imagen, titulo, descripcion, precio)} className='btn btn-comprar'><i class="fas fa-cart-plus"></i> Agregar</button> }
+            				        	         { !user ?  <Button  onClick={() => handleAlerta()}  className='btn btn-comprar'><i class="fas fa-cart-plus"></i> Agregar</Button>  : <Button variant="contained" onClick={() => handleDetallito(id, imagen, titulo, descripcion, precio)}   className='btn btn-comprar'><i class="fas fa-cart-plus"></i> Agregar</Button> }
 
-                                                 <button onClick={() => handleLike(id, imagen, titulo, descripcion, precio)} className='btn btn-comprar'><i class="fas fa-cart-plus"></i> like</button>
+                                                 <button  onClick={() => handleLike(id, imagen, titulo, descripcion, precio)} className='btn btn-comprar'><i class="fas fa-cart-plus"></i> like</button>
 
             				        	        </div>
             				        	    </div>

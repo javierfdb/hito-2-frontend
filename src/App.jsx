@@ -17,8 +17,6 @@ import MisPublicaciones from './pages/MisPublicaciones';
 import Publicar from './pages/Publicar';
 import { TiendaContext } from './context/TiendaContext';
 
-
-
   export default function App() {
 
     const {user} = useContext(TiendaContext);

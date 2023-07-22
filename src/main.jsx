@@ -13,7 +13,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <TiendaProvider>
-        <CssBaseline />   
+        <CssBaseline/>   
           <App />
     </TiendaProvider>
   </BrowserRouter>

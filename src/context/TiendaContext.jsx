@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState, createContext } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 
 export const TiendaContext = createContext();
@@ -8,7 +9,7 @@ export const TiendaContext = createContext();
 const initialStateToken = localStorage.getItem("token"); // esto siempre debe estar por fuera del 'tienda provider'
 
 export default function TiendaProvider  ({children})  {
-
+    
     const navigate = useNavigate();
 
     const [token, setToken] = useState(initialStateToken);
@@ -121,7 +122,13 @@ export default function TiendaProvider  ({children})  {
 
     const handleDetallito = (id, imagen, titulo, descripcion, precio, cantidad) => {
         if (cartItems.some((item) => id == item.id)) {
-            alert('Producto ya agregado');
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Producto ya agregado',
+                showConfirmButton: false,
+                timer: 1500
+            })
         } else {
             // correccion error raro
             const newBuenoWorker = {
@@ -133,7 +140,13 @@ export default function TiendaProvider  ({children})  {
                }
                setCartItems([...cartItems, newBuenoWorker]);
             const totalPrice = cartItems.reduce((total, item) => total + item.precio, 0);
-            alert('Producto agregado con éxito');
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Producto agregado con éxito',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
 
@@ -166,12 +179,25 @@ export default function TiendaProvider  ({children})  {
     }; 
 
     const handleAlerta= () => {
-        alert('Debes iniciar sesión CTM')
+        Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Por favor debes iniciar sesión',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }; 
 
     const handleLike = (id, imagen, titulo, descripcion, precio, meGusta) => {
         if (like.some((item) => id == item.id)) {
-            alert('Producto ya agregado');
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Producto ya agregado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+    
         } else {
             // correccion error raro
             const newLike = {
@@ -183,6 +209,13 @@ export default function TiendaProvider  ({children})  {
                }
 
                setLike([...like, newLike]); 
+               Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Producto agregado con éxito',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
 

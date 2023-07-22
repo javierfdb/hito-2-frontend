@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from "react";
 import Banner from "../components/Banner";
 import { useContext } from 'react';
 import { TiendaContext } from '../context/TiendaContext';
@@ -6,6 +7,8 @@ import { TiendaContext } from '../context/TiendaContext';
 export default function Tienda() {
     const {productos, handleDetalle, handleLike, handleDislike} = useContext(TiendaContext);
     
+   
+        
     return (
 
         <>
