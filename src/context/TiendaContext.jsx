@@ -49,7 +49,6 @@ export default function TiendaProvider  ({children})  {
             const publicacionesPropias = await res.json();
             setPublicaciones(publicacionesPropias);
            
-           console.log("this: ", token);
         } catch (error) {
             console.log(error)
         }
@@ -183,9 +182,7 @@ export default function TiendaProvider  ({children})  {
                 meGusta: true
                }
 
-               setLike([...like, newLike]);
-            
-            
+               setLike([...like, newLike]); 
         }
     }
 
