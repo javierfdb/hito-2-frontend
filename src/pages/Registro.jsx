@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Registro() {
     const navigate = useNavigate();
     const {saveToken, getUserProfile, loading, setLoading } = useContext(TiendaContext);
-    const [email, setEmail] = useState("");
+    const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
 
     const handleSubmit = async (e) => {
@@ -22,7 +22,7 @@ export default function Registro() {
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({
-                    email,
+                    correo,
                     contrasena,
                 }),
             });
@@ -48,7 +48,7 @@ export default function Registro() {
                     <h2>Por favor ingresa tus datos</h2>
 
                     <form onSubmit={handleSubmit}>
-                    <input required type="email" placeholder='Ingrese un email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input required type="email" placeholder='Ingrese un email' value={correo} onChange={(e) => setCorreo(e.target.value)} />
                     <input required type="password" placeholder='Ingrese un password' value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
                         <div className="box-btn-submit">
                             <Button

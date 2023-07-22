@@ -13,7 +13,7 @@ export default function Ingresar() {
 
     const {saveToken, getUserProfile, loading, setLoading } = useContext(TiendaContext);
 
-    const [email, setEmail] = useState("");
+    const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
 
     const handleSubmit = async (e) => {
@@ -27,15 +27,14 @@ export default function Ingresar() {
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({
-                    email,
+                    correo,
                     contrasena,
                 }),
             });
             const data = await res.json();
-            // console.log("solo data: ", data); 
-            // console.log("access_token: ", data.token); 
             saveToken(data.token);
             await getUserProfile(data.token); 
+            console.log("acá: ", data.token);
             navigate("/dashboard");
         } catch (error) {
             console.log(error); 
@@ -43,6 +42,8 @@ export default function Ingresar() {
             setLoading(false);
         }        
     };
+
+   
 
     return (
     
@@ -56,7 +57,7 @@ export default function Ingresar() {
                     <h2>Por favor ingresa tus datos</h2>
 
                     <form onSubmit={handleSubmit}>
-                    <input required type="email" placeholder='Ingrese un email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input required type="email" placeholder='Ingrese un Correo' value={correo} onChange={(e) => setCorreo(e.target.value)} />
                     <input required type="password" placeholder='Ingrese un password' value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
                         <div className="box-btn-submit">
                             <Button

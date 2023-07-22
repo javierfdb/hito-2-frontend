@@ -172,7 +172,7 @@ export default function TiendaProvider  ({children})  {
     }; 
 
     return (
-        <TiendaContext.Provider value={{handleDislike , like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle:handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
+        <TiendaContext.Provider value={{handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
             {children}
         </TiendaContext.Provider>
     )
