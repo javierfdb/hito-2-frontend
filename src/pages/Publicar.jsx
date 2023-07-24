@@ -44,6 +44,8 @@ export default function Publicar() {
             });
             const data = await res.json();
             navigate("/dashboard/mis-publicaciones");
+            window.location.reload();
+            getMisPublicaciones();
         } catch (error) {
             console.log(error); 
         } finally {
@@ -57,7 +59,7 @@ export default function Publicar() {
     return (
         <>
        <Banner url="/images/banner-home.png" texto="Publicar"/>
-       <div className="container">
+       <div className="container min-container">
             <div className="row my-5">
             <div className="col-lg-2 cont-nav-dash">
                 <NavLink to="/dashboard" className="nav-link">Mi perfil</NavLink>

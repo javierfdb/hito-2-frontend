@@ -20,10 +20,17 @@ export default function TiendaProvider  ({children})  {
     const [singleproduct, setSingle] = useState([]);
     const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('ppsCarrito')) || [] );
     const [like, setLike] = useState(JSON.parse(localStorage.getItem('ppsLike')) || [] );
+    const [isLoading, setIsLoading] = useState(true);
 
+    const Spinner = async () => {
+        setTimeout(() => {
+            setIsLoading(false); 
+        }, 1000);
+    }
 
     const getProductos = async () => {
         try {
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -39,7 +46,8 @@ export default function TiendaProvider  ({children})  {
 
     const handleTodosPro = async () => {
         try {
-            
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -51,6 +59,8 @@ export default function TiendaProvider  ({children})  {
 
     const handleFiltroTop = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Top de ventas';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -62,6 +72,8 @@ export default function TiendaProvider  ({children})  {
     
     const handleFiltroPerros = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Perros';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -73,6 +85,8 @@ export default function TiendaProvider  ({children})  {
 
     const handleFiltroGatos = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Gatos';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -84,6 +98,8 @@ export default function TiendaProvider  ({children})  {
 
     const handleFiltroExo = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Animales exóticos';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -115,6 +131,8 @@ export default function TiendaProvider  ({children})  {
 
     const handlePrecioAsc = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?sort[precio]=asc';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -126,6 +144,8 @@ export default function TiendaProvider  ({children})  {
 
     const handlePrecioDesc = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?sort[precio]=desc';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -137,6 +157,8 @@ export default function TiendaProvider  ({children})  {
 
     const handleAlfAsc = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?sort[titulo]=asc';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -148,6 +170,8 @@ export default function TiendaProvider  ({children})  {
 
     const handleAlfDesc = async () => {
         try {
+            setIsLoading(true);
+            Spinner();
             const url = import.meta.env.VITE_API_URL + '/productos?sort[titulo]=desc';
             const response = await fetch(url)
             const allProductos = await response.json();
@@ -329,8 +353,40 @@ export default function TiendaProvider  ({children})  {
         setLike(nuevoLike);
     }; 
 
+  
+    const handleDeletePubli = async (id) => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos/'+ id;
+            const response = await fetch(url, {
+                method: 'DELETE',
+            });
+            const chale = await response.json();
+            setPublicaciones(chale);
+            window.location.reload();
+            getMisPublicaciones();
+        } catch (error) {
+            console.log(error)
+        }
+       
+    };
+
+
+  
+   
+
+
+    
+    
+
+
+  
+
+    
+
+    
+
     return (
-        <TiendaContext.Provider value={{handleAlfAsc, handleAlfDesc, handlePrecioAsc, handlePrecioDesc, handleTodosPro, handleFiltroPerros, handleFiltroTop, handleFiltroGatos, handleFiltroExo, publicaciones, handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
+        <TiendaContext.Provider value={{handleDeletePubli, isLoading, handleAlfAsc, handleAlfDesc, handlePrecioAsc, handlePrecioDesc, handleTodosPro, handleFiltroPerros, handleFiltroTop, handleFiltroGatos, handleFiltroExo, publicaciones, handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
             {children}
         </TiendaContext.Provider>
     )

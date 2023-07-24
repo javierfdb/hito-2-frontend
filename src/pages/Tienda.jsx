@@ -5,11 +5,17 @@ import { useContext } from 'react';
 import { TiendaContext } from '../context/TiendaContext';
 
 export default function Tienda() {
-    const {productos, handleDetalle, handleLike, handleFiltroPerros, handleFiltroTop, handleFiltroGatos, handleFiltroExo, handleTodosPro, handlePrecioAsc, handlePrecioDesc, handleAlfAsc, handleAlfDesc} = useContext(TiendaContext);
+    const {productos, handleDetalle, handleLike, handleFiltroPerros, handleFiltroTop, handleFiltroGatos, handleFiltroExo, handleTodosPro, handlePrecioAsc, handlePrecioDesc, handleAlfAsc, handleAlfDesc, isLoading} = useContext(TiendaContext);
 
   const [isChecked1, setIsChecked1] = useState(true);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+  const [isChecked5, setIsChecked5] = useState(false);
+  const [isChecked6, setIsChecked6] = useState(false);
+  const [isChecked7, setIsChecked7] = useState(false);
+  const [isChecked8, setIsChecked8] = useState(false);
+  const [isChecked9, setIsChecked9] = useState(false);
 
   const handleCheckbox1Change = () => {
     setIsChecked1(true);
@@ -144,20 +150,20 @@ export default function Tienda() {
                                 </label>
                             </div>
                             <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onClick={() => handleFiltroPerros()}checked={isChecked3}
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onClick={() => handleFiltroPerros()} checked={isChecked3}
           onChange={handleCheckbox3Change}/>
                                 <label className="form-check-label" for="flexRadioDefault2">
                                     Perros
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onClick={() => handleFiltroGatos()} onChange={handleCheckbox4Change}/>
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onClick={() => handleFiltroGatos()} checked={isChecked4} onChange={handleCheckbox4Change}/>
                                 <label className="form-check-label" for="flexRadioDefault3">
                                     Gatos
                                 </label>
                             </div>
                             <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onClick={() => handleFiltroExo()} onChange={handleCheckbox5Change}/>
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onClick={() => handleFiltroExo()} checked={isChecked5} onChange={handleCheckbox5Change}/>
                                 <label className="form-check-label" for="flexRadioDefault4">
                                     Animales exóticos
                                 </label>
@@ -172,7 +178,7 @@ export default function Tienda() {
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" onClick={() => handlePrecioDesc()} onChange={handleCheckbox7Change}/>
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" onClick={() => handlePrecioDesc()} checked={isChecked7} onChange={handleCheckbox7Change}/>
                                 <label className="form-check-label" for="flexRadioDefault8">
                                     De mayor a menor
                                 </label>
@@ -181,13 +187,13 @@ export default function Tienda() {
                         <div className="box-checkboxs mt-3">
                             <h5 className='mb-3'>Nombre</h5>
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" onClick={() => handleAlfAsc()} onChange={handleCheckbox8Change} />
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" onClick={() => handleAlfAsc()} checked={isChecked8} onChange={handleCheckbox8Change} />
                                 <label className="form-check-label" for="flexRadioDefault7">
                                     A - Z
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" onClick={() => handleAlfDesc()}  onChange={handleCheckbox9Change}/>
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" onClick={() => handleAlfDesc()} checked={isChecked9} onChange={handleCheckbox9Change}/>
                                 <label className="form-check-label" for="flexRadioDefault8">
                                    Z - A
                                 </label>
@@ -196,6 +202,25 @@ export default function Tienda() {
                         </div>
                         <div className="col-lg-9">
                             <div className="row m-0 p-0">
+
+
+                            {isLoading ? ( <>
+
+                            <div className="col-lg-12 d-flex justify-content-center">
+                                <div id="spinner">
+                                    <div className="sk-chase">
+                                        <div className="sk-chase-dot"></div>
+                                        <div className="sk-chase-dot"></div>
+                                        <div className="sk-chase-dot"></div>
+                                        <div className="sk-chase-dot"></div>
+                                        <div className="sk-chase-dot"></div>
+                                        <div className="sk-chase-dot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            </> ) : (
+                                <>
                                 
                                 {productos.map((item) => {
                                     const {id,titulo,descripcion,precio, imagen, meGusta} = item;
@@ -217,6 +242,11 @@ export default function Tienda() {
                                             </div>
                                         </div>
                                 })}
+                                </>
+                            )}
+                                
+                                
+                                
                             </div>
                         </div>
                     </div>

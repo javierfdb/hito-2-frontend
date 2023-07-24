@@ -19,7 +19,7 @@ export default function Dashboard() {
             </div>
         </section>
 
-        <div className="container">
+        <div className="container min-container">
             <div className="row my-5">
                     <div className="col-lg-2 cont-nav-dash">
                     <NavLink to="/dashboard" className="nav-link this-dash">Mi perfil</NavLink>

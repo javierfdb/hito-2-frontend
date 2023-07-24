@@ -34,8 +34,9 @@ export default function Ingresar() {
             const data = await res.json();
             saveToken(data.token);
             await getUserProfile(data.token); 
-            console.log("acá: ", data.token);
             navigate("/dashboard");
+            window.location.reload();
+            getMisPublicaciones();
         } catch (error) {
             console.log(error); 
         } finally {

@@ -6,14 +6,14 @@ import {NavLink} from 'react-router-dom';
 
 
 export default function MisPublicaciones() {
-    const {publicaciones, handleDetalle, like} = useContext(TiendaContext);
+    const {publicaciones, handleDetalle, like, handleDeletePubli} = useContext(TiendaContext);
     const numberOfPubli = publicaciones.length;
     const numberOfLikes = like.length;
 
     return (
         <>
        <Banner url="/images/banner-home.png" texto="Mis publicaciones"/>
-       <div className="container">
+       <div className="container min-container">
             <div className="row my-5">
             <div className="col-lg-2 cont-nav-dash">
                 <NavLink to="/dashboard" className="nav-link">Mi perfil</NavLink>
@@ -59,6 +59,7 @@ export default function MisPublicaciones() {
                                     </div>
                                     <div className="box-btn-comprar">
                                         <button onClick={() => handleDetalle(id)} className='btn btn-comprar'>Detalle</button>
+                                        <button className='mx-3 bg-dark delete' onClick={() => handleDeletePubli(id)}><i className="fas fa-trash-alt"></i></button>
                                     </div>
                                 </div>
                             </div>

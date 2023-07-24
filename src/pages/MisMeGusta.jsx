@@ -13,7 +13,7 @@ export default function MisMeGusta() {
     return (
         <>
        <Banner url="/images/banner-home.png" texto="Mis Me Gusta"/>
-       <div className="container">
+       <div className="container min-container">
             <div className="row my-5">
             <div className="col-lg-2 cont-nav-dash">
                 <NavLink to="/dashboard" className="nav-link">Mi perfil</NavLink>

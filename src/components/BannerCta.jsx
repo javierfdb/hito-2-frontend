@@ -11,7 +11,7 @@ import React, { Component } from 'react'
                             <p>{bajada}</p>
                         </div>
                         <div className="col-lg-3 box-btn">
-                            <a href={link} class="btn btn-primary btn-lg">Large button</a>
+                            <a href={link} className="btn btn-primary btn-lg">Large button</a>
                         </div>
                     </div>
                 </div>
