@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState, createContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
+
 
 
 export const TiendaContext = createContext();
@@ -21,9 +21,10 @@ export default function TiendaProvider  ({children})  {
     const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('ppsCarrito')) || [] );
     const [like, setLike] = useState(JSON.parse(localStorage.getItem('ppsLike')) || [] );
 
+
     const getProductos = async () => {
         try {
-            const url = import.meta.env.VITE_API_URL + '/tienda';
+            const url = import.meta.env.VITE_API_URL + '/productos';
             const response = await fetch(url)
             const allProductos = await response.json();
             setProductos(allProductos);
@@ -35,6 +36,63 @@ export default function TiendaProvider  ({children})  {
     useEffect(() => {
         getProductos();
     }, []);
+
+    const handleTodosPro = async () => {
+        try {
+            
+            const url = import.meta.env.VITE_API_URL + '/productos';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleFiltroTop = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Top de ventas';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
+    const handleFiltroPerros = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Perros';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleFiltroGatos = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Gatos';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleFiltroExo = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?filters[categoria][$eq]=Animales exóticos';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     const getMisPublicaciones = async () => {
         try {
@@ -49,7 +107,51 @@ export default function TiendaProvider  ({children})  {
             
             const publicacionesPropias = await res.json();
             setPublicaciones(publicacionesPropias);
-           
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handlePrecioAsc = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?sort[precio]=asc';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handlePrecioDesc = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?sort[precio]=desc';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleAlfAsc = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?sort[titulo]=asc';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleAlfDesc = async () => {
+        try {
+            const url = import.meta.env.VITE_API_URL + '/productos?sort[titulo]=desc';
+            const response = await fetch(url)
+            const allProductos = await response.json();
+            setProductos(allProductos);   
         } catch (error) {
             console.log(error)
         }
@@ -57,8 +159,8 @@ export default function TiendaProvider  ({children})  {
 
     useEffect(() => {
         getMisPublicaciones();
-    }, []);
-
+    }, []); 
+    
     useEffect(() => {
         if(token){
             getUserProfile(token);
@@ -117,6 +219,8 @@ export default function TiendaProvider  ({children})  {
         setUser();
         setToken(null);        
         localStorage.removeItem('token');
+        localStorage.removeItem('ppsCarrito');
+        localStorage.removeItem('ppsLike');
         navigate("/");
     }
 
@@ -226,7 +330,7 @@ export default function TiendaProvider  ({children})  {
     }; 
 
     return (
-        <TiendaContext.Provider value={{publicaciones, handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
+        <TiendaContext.Provider value={{handleAlfAsc, handleAlfDesc, handlePrecioAsc, handlePrecioDesc, handleTodosPro, handleFiltroPerros, handleFiltroTop, handleFiltroGatos, handleFiltroExo, publicaciones, handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>
             {children}
         </TiendaContext.Provider>
     )

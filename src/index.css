@@ -617,6 +617,9 @@ header a.btn-logout {
   max-width: 200px;
 }
 
+.btn-logout .fas.fa-sign-out-alt {
+  margin-left: .5rem;
+}
 
 
 /* MEDIAS */

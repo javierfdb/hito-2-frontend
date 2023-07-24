@@ -5,10 +5,120 @@ import { useContext } from 'react';
 import { TiendaContext } from '../context/TiendaContext';
 
 export default function Tienda() {
-    const {productos, handleDetalle, handleLike, handleDislike} = useContext(TiendaContext);
+    const {productos, handleDetalle, handleLike, handleFiltroPerros, handleFiltroTop, handleFiltroGatos, handleFiltroExo, handleTodosPro, handlePrecioAsc, handlePrecioDesc, handleAlfAsc, handleAlfDesc} = useContext(TiendaContext);
+
+  const [isChecked1, setIsChecked1] = useState(true);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+
+  const handleCheckbox1Change = () => {
+    setIsChecked1(true);
+    setIsChecked2(false);
+    setIsChecked3(false);
+    setIsChecked4(false);
+    setIsChecked5(false);
+    setIsChecked6(false);
+    setIsChecked7(false);
+    setIsChecked8(false);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox2Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(true);
+    setIsChecked3(false);
+    setIsChecked4(false);
+    setIsChecked5(false);
+    setIsChecked6(false);
+    setIsChecked7(false);
+    setIsChecked8(false);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox3Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setIsChecked3(true);
+    setIsChecked4(false);
+    setIsChecked5(false);
+    setIsChecked6(false);
+    setIsChecked7(false);
+    setIsChecked8(false);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox4Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setIsChecked3(false);
+    setIsChecked4(true);
+    setIsChecked5(false);
+    setIsChecked6(false);
+    setIsChecked7(false);
+    setIsChecked8(false);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox5Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setIsChecked3(false);
+    setIsChecked4(false);
+    setIsChecked5(true);
+    setIsChecked6(false);
+    setIsChecked7(false);
+    setIsChecked8(false);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox6Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setIsChecked3(false);
+    setIsChecked4(false);
+    setIsChecked5(false);
+    setIsChecked6(true);
+    setIsChecked7(false);
+    setIsChecked8(false);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox7Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setIsChecked3(false);
+    setIsChecked4(false);
+    setIsChecked5(false);
+    setIsChecked6(false);
+    setIsChecked7(true);
+    setIsChecked8(false);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox8Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setIsChecked3(false);
+    setIsChecked4(false);
+    setIsChecked5(false);
+    setIsChecked6(false);
+    setIsChecked7(false);
+    setIsChecked8(true);
+    setIsChecked9(false);
+  };
+
+  const handleCheckbox9Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(false);
+    setIsChecked3(false);
+    setIsChecked4(false);
+    setIsChecked5(false);
+    setIsChecked6(false);
+    setIsChecked7(false);
+    setIsChecked8(false);
+    setIsChecked9(true);
+  };
     
-   
-        
     return (
 
         <>
@@ -18,29 +128,69 @@ export default function Tienda() {
                     <div className="row my-5">
                     <div className="col-lg-3">
                         <div className="box-checkboxs">
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  />
-                            <label className="form-check-label" for="flexRadioDefault1">
-                                Top de ventas
-                            </label>
+                            <h5 className='mb-3'>Categorías</h5>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" onClick={() => handleTodosPro()} checked={isChecked1}
+          onChange={handleCheckbox1Change} />
+                                <label className="form-check-label" for="flexRadioDefault6">
+                                    Todos
+                                </label>
                             </div>
                             <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-                            <label className="form-check-label" for="flexRadioDefault2">
-                                Perros
-                            </label>
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" onClick={() => handleFiltroTop()} checked={isChecked2}
+          onChange={handleCheckbox2Change}/>
+                                <label className="form-check-label" for="flexRadioDefault5">
+                                    Top de ventas
+                                </label>
                             </div>
                             <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"/>
-                            <label className="form-check-label" for="flexRadioDefault3">
-                                Gatos
-                            </label>
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onClick={() => handleFiltroPerros()}checked={isChecked3}
+          onChange={handleCheckbox3Change}/>
+                                <label className="form-check-label" for="flexRadioDefault2">
+                                    Perros
+                                </label>
                             </div>
                             <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4"/>
-                            <label className="form-check-label" for="flexRadioDefault4">
-                                Animales exóticos
-                            </label>
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onClick={() => handleFiltroGatos()} onChange={handleCheckbox4Change}/>
+                                <label className="form-check-label" for="flexRadioDefault3">
+                                    Gatos
+                                </label>
+                            </div>
+                            <div className="form-check">
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onClick={() => handleFiltroExo()} onChange={handleCheckbox5Change}/>
+                                <label className="form-check-label" for="flexRadioDefault4">
+                                    Animales exóticos
+                                </label>
+                            </div>
+                        </div>
+                        <div className="box-checkboxs mt-3">
+                            <h5 className='mb-3'>Precio</h5>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" onClick={() => handlePrecioAsc()} onChange={handleCheckbox6Change}/>
+                                <label className="form-check-label" for="flexRadioDefault7">
+                                    De menor a mayor
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" onClick={() => handlePrecioDesc()} onChange={handleCheckbox7Change}/>
+                                <label className="form-check-label" for="flexRadioDefault8">
+                                    De mayor a menor
+                                </label>
+                            </div>
+                        </div>
+                        <div className="box-checkboxs mt-3">
+                            <h5 className='mb-3'>Nombre</h5>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" onClick={() => handleAlfAsc()} onChange={handleCheckbox8Change} />
+                                <label className="form-check-label" for="flexRadioDefault7">
+                                    A - Z
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" onClick={() => handleAlfDesc()}  onChange={handleCheckbox9Change}/>
+                                <label className="form-check-label" for="flexRadioDefault8">
+                                   Z - A
+                                </label>
                             </div>
                         </div>
                         </div>
