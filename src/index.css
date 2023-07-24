@@ -4,6 +4,18 @@
   min-height: 1000px;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, ul, li, button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+button.btn {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .banner-interior {
   position: relative;
   height: 18.75rem;
@@ -75,12 +87,27 @@ header nav ul {
 
 header nav ul.navbar-nav li a {
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
 }
 
 header nav ul.navbar-nav li a.nav-link.active {
  color: #1D5B79;
  font-weight: bold;
  border-bottom: 2px solid #1D5B79;
+}
+
+header nav ul.navbar-nav li a span {
+  background: red;
+  color: #fff;
+  padding: 0.2rem;
+  border-radius: 100%;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.5rem;
 }
 
 header img.logo-web {
@@ -123,6 +150,12 @@ header img.logo-web {
   text-align: center;
   border-radius: 100px;
   min-width: 150px;
+}
+
+.productos .btn.btn-comprar:hover {
+  color: #FE0000;
+  background-color: #fff;
+  border: 1px solid #FE0000;
 }
 
 .productos .card-body {
@@ -266,7 +299,7 @@ header a.btn-logout {
 }
 
 .cont-nav-dash a {
-  margin-bottom: .5rem;
+  margin-bottom: .7rem;
 }
 
 .publicar {
@@ -299,6 +332,292 @@ header a.btn-logout {
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.mis-publicaciones .card {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+}
+
+.mis-publicaciones .card .card-body {
+  display: flex;
+  width: 85%;
+}
+
+.mis-publicaciones .card .card-body .textos {
+  width: 70%;
+}
+
+.mis-publicaciones .card .card-body .box-btn-comprar {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mis-publicaciones .card .card-body .box-btn-comprar .btn.btn-comprar {
+  margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    background-color: #FE0000;
+    text-align: center;
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+}
+
+.mis-publicaciones .card .card-body .box-btn-comprar .btn.btn-comprar:hover {
+    color: #FE0000;
+    background-color: #fff;
+    border: 1px solid #FE0000;
+}
+
+.mis-publicaciones .card .card-body .textos .precio {
+  font-weight: bold;
+  color: #FE0000;
+}
+
+.mis-publicaciones .col-lg-12,
+.mis-me-gusta .col-lg-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mis-publicaciones .card figure {
+  width: 15%;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mis-publicaciones .card figure img {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.mis-me-gusta .card svg {
+  position: absolute;
+    right: 3%;
+    top: 8%;
+}
+
+.mis-me-gusta .card-body {
+  padding-top: 2rem;
+  position: relative;
+}
+
+.mis-me-gusta .card-body .card-title {
+  font-weight: bold;
+}
+
+.mis-me-gusta .precio {
+  color: #FE0000;
+  font-weight: bold;
+}
+
+.mis-me-gusta .box-btn-comprar {
+  display: flex;
+  justify-content: center;
+}
+
+.mis-me-gusta .btn.btn-comprar {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  background-color: #FE0000;
+  text-align: center;
+  border-radius: 100px;
+  min-width: 150px;
+}
+
+.mis-me-gusta .btn.btn-comprar:hover {
+  color: #FE0000;
+  background-color: #fff;
+  border: 1px solid #FE0000;
+}
+
+.container-detalle .box-bajada {
+  margin-bottom: 2rem;
+}
+
+.productos.detalle .fas.fa-cart-plus {
+  margin-right: 0.5rem;
+}
+
+.productos.detalle .btn.btn-comprar {
+  border: 1px solid #FE0000;
+}
+
+.cont-nav-dash a {
+  display: flex;
+  align-items: center;
+}
+
+.cont-nav-dash a span {
+  background: red;
+  color: #fff;
+  padding: 0.2rem;
+  border-radius: 100%;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.card-pps.card-pps-carro {
+  margin-bottom: 2rem;
+  border: 0px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 1rem;
+}
+
+.card-pps.card-pps-carro .col-lg-6.texto {
+  display: flex;
+  align-items: flex-end;
+}
+
+.container-detalle h4 {
+  text-transform: capitalize;
+  font-size: 24px;
+}
+
+.card-pps.card-pps-carro .col-lg-4.texto {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.container-detalle .sumar-restar p {
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.container-detalle .sumar-restar button {
+  color: #fff;
+  font-size: 12px;
+  padding: 0.5rem 0.8rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+}
+
+.container-detalle .sumar-restar h4 {
+  margin-bottom: 0px;
+}
+
+.container-detalle .sumar-restar button {
+  color: #fff;
+  font-size: 12px;
+  padding: 0.5rem 0.8rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+}
+
+.container-detalle .sumar-restar button {
+  color: #fff;
+  font-size: 12px;
+  padding: 0.5rem 0.8rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+}
+
+.container-detalle .total {
+  margin-top: 1rem;
+  font-size: 22px;
+  font-weight: bolder;
+}
+
+.container-detalle button.pagar {
+  max-width: 250px;
+  font-weight: bold;
+}
+
+.container-detalle.carrito .box-btn-comprar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.container-detalle.carrito .box-btn-comprar a {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  background-color: #FE0000;
+  text-align: center;
+  border-radius: 100px;
+  padding: .5rem 1rem;
+  min-width: 150px;
+  border: 1px solid #FE0000;
+}
+
+.container-detalle.carrito .box-btn-comprar a:hover {
+  color: #FE0000;
+  background-color: #fff;
+  border: 1px solid #FE0000;
+}
+
+.container-detalle.carrito h4 {
+  text-transform: unset;
+  font-size: 24px;
+}
+
+.container-detalle.carrito figure {
+  margin: 2rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-detalle.carrito figure img {
+  max-width: 200px;
+}
+
+.mis-me-gusta .col-lg-6,
+.mis-publicaciones .col-lg-6 {
+  margin: 0 auto;
+}
+
+.mis-me-gusta .box-btn-comprar,
+.mis-publicaciones .box-btn-comprar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.mis-me-gusta .box-btn-comprar a,
+.mis-publicaciones .box-btn-comprar a {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+  background-color: #FE0000;
+  text-align: center;
+  border-radius: 100px;
+  padding: 0.5rem 1rem;
+  min-width: 150px;
+  border: 1px solid #FE0000;
+}
+
+.mis-me-gusta .col-lg-6 figure,
+.mis-publicaciones .col-lg-6 figure {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0rem;
+}
+
+.mis-me-gusta .col-lg-6 figure img,
+.mis-publicaciones .col-lg-6 figure img {
+  max-width: 200px;
+}
+
+
 
 /* MEDIAS */
 

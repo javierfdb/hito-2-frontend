@@ -8,7 +8,10 @@ import {NavLink} from 'react-router-dom';
 
 export default function Publicar() {
     const navigate = useNavigate();
-    const {loading, setLoading, saveToken, getUserProfile, token} = useContext(TiendaContext);
+    const {loading, setLoading, publicaciones, like, saveToken, getUserProfile, token} = useContext(TiendaContext);
+
+    const numberOfPubli = publicaciones.length;
+    const numberOfLikes = like.length;
 
     const [titulo, setTitulo] = useState("");
     const [descripcion, setDescripcion] = useState("");
@@ -58,8 +61,20 @@ export default function Publicar() {
             <div className="row my-5">
             <div className="col-lg-2 cont-nav-dash">
                 <NavLink to="/dashboard" className="nav-link">Mi perfil</NavLink>
-                <NavLink to="/dashboard/mis-me-gusta" className="nav-link">Mis Me Gusta</NavLink>
-                <NavLink to="/dashboard/mis-publicaciones" className="nav-link">Mis publicaciones</NavLink>
+                <NavLink to="/dashboard/mis-me-gusta" className="nav-link">Mis Me Gusta
+                {!numberOfLikes > 0 ? (
+                <></>
+                ) : (
+                    <span className='carrito-cantidad'> {numberOfLikes}</span>
+                )}
+                </NavLink>
+                <NavLink to="/dashboard/mis-publicaciones" className="nav-link">Mis publicaciones
+                {!numberOfPubli > 0 ? (
+                <></>
+                ) : (
+                    <span className='carrito-cantidad'> {numberOfPubli}</span>
+                )}
+                </NavLink>
                 <NavLink to="/dashboard/publicar" className="nav-link this-dash">Publicar</NavLink>
             </div>
             <div className="col-lg-10">

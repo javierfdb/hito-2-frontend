@@ -59,7 +59,7 @@ export default function Tienda() {
                                                 </div>
                                                     <h5 className="card-title">{titulo}</h5>
                                                     <p className="card-text">{descripcion}</p>
-                                                    <h4 className="precio">{precio}</h4>
+                                                    <h4 className="precio">${precio}</h4>
                                                     <div className="box-btn-comprar">
                                                         <button onClick={() => handleDetalle(id)} className='btn btn-comprar'>Ver más</button>
                                                     </div>

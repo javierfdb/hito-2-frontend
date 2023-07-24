@@ -6,7 +6,10 @@ import {NavLink} from 'react-router-dom';
 
 
 export default function MisMeGusta() {
-    const { like, handleDetalle, handleDislike } = useContext(TiendaContext);  
+    const {like, handleDetalle, handleDislike, publicaciones } = useContext(TiendaContext);  
+    const numberOfLikes = like.length;
+    const numberOfPubli = publicaciones.length;
+    console.log(numberOfLikes);
     return (
         <>
        <Banner url="/images/banner-home.png" texto="Mis Me Gusta"/>
@@ -14,14 +17,33 @@ export default function MisMeGusta() {
             <div className="row my-5">
             <div className="col-lg-2 cont-nav-dash">
                 <NavLink to="/dashboard" className="nav-link">Mi perfil</NavLink>
-                <NavLink to="/dashboard/mis-me-gusta" className="nav-link this-dash">Mis Me Gusta</NavLink>
-                <NavLink to="/dashboard/mis-publicaciones" className="nav-link">Mis publicaciones</NavLink>
+                <NavLink to="/dashboard/mis-me-gusta" className="nav-link this-dash">Mis Me Gusta
+                {!numberOfLikes > 0 ? (
+                    <></>
+                ) : (
+                    <span className='carrito-cantidad'> {numberOfLikes}</span>
+                )}
+                </NavLink>
+                <NavLink to="/dashboard/mis-publicaciones" className="nav-link">Mis publicaciones
+                {!numberOfPubli > 0 ? (
+                    <></>
+                ) : (
+                    <span className='carrito-cantidad'> {numberOfPubli}</span>
+                )}
+                </NavLink>
                 <NavLink to="/dashboard/publicar" className="nav-link">Publicar</NavLink>
             </div>
             <div className="col-lg-10">
-            <div className="row">
+            <div className="row mis-me-gusta">
             
-            {like.map((item, index) => {
+            {numberOfLikes == 0 ? (<div className="col-lg-6">
+      <h4 className='text-center mb-3'>Nada por acá aún.</h4>
+      <figure> <img className='w-100' src="/images/empty-me-gusta.png" alt="Patitas Pet Store" /></figure>
+
+      <div class="box-btn-comprar">
+        <NavLink to="/tienda" className="nav-link btn btn-comprar">Ir a la Tienda</NavLink>
+     </div>
+   </div>) : (<>{like.map((item) => {
                 const {id, imagen, titulo, descripcion, precio, meGusta} = item;
                 return <div key={id} className="col-lg-4">
                         <div className="card">
@@ -37,14 +59,16 @@ export default function MisMeGusta() {
                             </div>
                                 <h5 className="card-title">{titulo}</h5>
                                 <p className="card-text">{descripcion}</p>
-                                <h4 className="precio">{precio}</h4>
+                                <h4 className="precio">${precio}</h4>
                                 <div className="box-btn-comprar">
                                     <button onClick={() => handleDetalle(id)} className='btn btn-comprar'>Ver más</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-            })}
+            })}</>)}
+
+            
 
             </div>
             </div>

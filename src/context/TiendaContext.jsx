@@ -204,6 +204,7 @@ export default function TiendaProvider  ({children})  {
                 id: id,
                 imagen: imagen,
                 titulo: titulo,
+                descripcion: descripcion,
                 precio: precio,
                 meGusta: true
                }

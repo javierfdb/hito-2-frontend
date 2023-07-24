@@ -43,7 +43,7 @@ export default function Header() {
                         <li className="nav-item">
                         <NavLink to="/carrito" className="nav-link">Carrito 
                         {!numberOfObjects > 0 ? (
-                            <span></span>
+                            <></>
                         ) : (
                             <span className='carrito-cantidad'> {numberOfObjects}</span>
                         )}
