@@ -685,6 +685,19 @@ button.navbar-toggler:focus:not(:focus-visible) {
   } 
 }
 
+/* 31-07-2023 */
+
+.mis-publicaciones button.delete {
+  border: 0px;
+  background: none;
+}
+
+.mis-publicaciones button.delete i,
+.mis-publicaciones button.delete em {
+  font-size: 22px;
+}
+
+
 /* MEDIAS */
 
 @media screen and (min-width: 991px) {
@@ -749,4 +762,8 @@ button.navbar-toggler:focus:not(:focus-visible) {
   font-size: 1.6rem;
   }
 }
+
+
+
+
 

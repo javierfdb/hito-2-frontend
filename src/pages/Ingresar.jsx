@@ -58,8 +58,8 @@ export default function Ingresar() {
                     <h2>Por favor ingresa tus datos</h2>
 
                     <form onSubmit={handleSubmit}>
-                    <input required type="email" placeholder='Ingrese un Correo' value={correo} onChange={(e) => setCorreo(e.target.value)} />
-                    <input required type="password" placeholder='Ingrese un password' value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
+                    <input required type="email" placeholder='Ingrese un correo' value={correo} onChange={(e) => setCorreo(e.target.value)} />
+                    <input required type="password" placeholder='Ingrese su password' value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
                         <div className="box-btn-submit">
                             <Button
                             variant="contained"
@@ -72,12 +72,6 @@ export default function Ingresar() {
                         </div>
                     </form>
                     </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-lg-12">
-                    <p><small><i>email: john@mail.com</i></small><br />
-                    <small><i>password: changeme</i></small></p>
                 </div>
             </div>
         </div>

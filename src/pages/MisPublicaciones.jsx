@@ -59,7 +59,7 @@ export default function MisPublicaciones() {
                                     </div>
                                     <div className="box-btn-comprar">
                                         <button onClick={() => handleDetalle(id)} className='btn btn-comprar'>Detalle</button>
-                                        <button className='mx-3 bg-dark delete' onClick={() => handleDeletePubli(id)}><i className="fas fa-trash-alt"></i></button>
+                                        <button className='mx-3 delete' onClick={() => handleDeletePubli(id)}><i className="fas fa-trash-alt"></i></button>
                                     </div>
                                 </div>
                             </div>
