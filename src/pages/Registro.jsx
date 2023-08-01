@@ -64,12 +64,6 @@ export default function Registro() {
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-lg-12">
-                    <p><small><i>email: john@mail.com</i></small><br />
-                    <small><i>password: changeme</i></small></p>
-                </div>
-            </div>
         </div>
      </section>
         </>

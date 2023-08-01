@@ -17,7 +17,7 @@ export default function Carrito() {
       <h4 className='text-center mb-3'>Carrito sin artículos.</h4>
       <figure> <img className='w-100' src="/images/empty-cart.png" alt="Patitas Pet Store" /></figure>
 
-      <div class="box-btn-comprar">
+      <div className="box-btn-comprar">
         <NavLink to="/tienda" className="nav-link btn btn-comprar">Ir a la Tienda</NavLink>
      </div>
    </div>

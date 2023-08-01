@@ -91,7 +91,8 @@ export default function Publicar() {
                         <input required type="text" placeholder='Link imagen' value={imagen} onChange={(e) => setImagen(e.target.value)} />
                         <input required type="text" placeholder='Ingresa un precio' value={precio} onChange={(e) => setPrecio(e.target.value)} />
                         <input required type="text" placeholder='Categoria' value={categoria} onChange={(e) => setCategoria(e.target.value)} />
-                        <input required type="text" placeholder='Like' value={megusta} onChange={(e) => setMegusta(e.target.value)} />
+                        
+                        <input required type="text" placeholder='Like'  value={megusta} onChange={(e) => setMegusta(e.target.value)} />
                         <div className="box-btn-submit">
                             <Button
                                 variant="contained"

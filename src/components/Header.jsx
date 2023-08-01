@@ -6,7 +6,7 @@ import { TiendaContext } from "../context/TiendaContext";
 
 
 export default function Header() {
-    const { user, logout, cartItems } = useContext(TiendaContext);
+    const { user, logout, cartItems, token } = useContext(TiendaContext);
     const [isActive, setIsActive] = useState(false);
     const numberOfObjects = cartItems.length;
 
@@ -54,7 +54,7 @@ export default function Header() {
                         <NavLink to="/tienda" className="nav-link">Tienda</NavLink>
                         </li>
 
-                        {!user ? (<></>) : (<>
+                        {!user || token == undefined ? (<></>) : (<>
 
                         <li onClick={handleToggleClass} className="nav-item">
                         <NavLink to="/carrito" className="nav-link">Carrito 
@@ -89,7 +89,7 @@ export default function Header() {
                         </>) : (<></>)}
 
                         
-                        {!user ? (<></>) : (<>
+                        {!user  ? (<></>) : (<>
                             <li><a className='btn-logout' onClick={logout}>Salir <i className="fas fa-sign-out-alt"></i></a></li>
                         </>)}
                     </ul>

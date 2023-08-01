@@ -11,7 +11,7 @@ export default function Ingresar() {
 
     const navigate = useNavigate();
 
-    const {saveToken, getUserProfile, loading, setLoading } = useContext(TiendaContext);
+    const {saveToken, getUserProfile, loading, setLoading, setUser, token } = useContext(TiendaContext);
 
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
@@ -32,15 +32,32 @@ export default function Ingresar() {
                 }),
             });
             const data = await res.json();
-            saveToken(data.token);
-            await getUserProfile(data.token); 
-            navigate("/dashboard");
-            window.location.reload();
-            getMisPublicaciones();
+            // console.log("data: ", data);
+            // console.log("token: ", token);
+            if(data.message) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Credenciales incorrectas',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else {
+                console.log('holanda');
+                saveToken(data.token);
+                await getUserProfile(data.token); 
+                navigate("/dashboard");
+                window.location.reload();
+                getMisPublicaciones();
+            }            
+              
         } catch (error) {
-            console.log(error); 
+            
+            console.log(error);
+            
         } finally {
             setLoading(false);
+            
         }        
     };
 
