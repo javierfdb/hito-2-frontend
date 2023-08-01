@@ -11,7 +11,7 @@ export default function Ingresar() {
 
     const navigate = useNavigate();
 
-    const {saveToken, getUserProfile, loading, setLoading, setUser, token } = useContext(TiendaContext);
+    const {saveToken, getUserProfile, loading, setLoading, getMisPublicaciones} = useContext(TiendaContext);
 
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
@@ -32,8 +32,6 @@ export default function Ingresar() {
                 }),
             });
             const data = await res.json();
-            // console.log("data: ", data);
-            // console.log("token: ", token);
             if(data.message) {
                 Swal.fire({
                     position: 'center',
@@ -43,7 +41,6 @@ export default function Ingresar() {
                     timer: 1500
                 });
             } else {
-                console.log('holanda');
                 saveToken(data.token);
                 await getUserProfile(data.token); 
                 navigate("/dashboard");

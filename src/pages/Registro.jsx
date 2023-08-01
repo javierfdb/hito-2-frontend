@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Registro() {
     const navigate = useNavigate();
-    const {saveToken, getUserProfile, loading, setLoading } = useContext(TiendaContext);
+    const {saveToken, getUserProfile, loading, setLoading, getMisPublicaciones } = useContext(TiendaContext);
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
 
@@ -27,9 +27,23 @@ export default function Registro() {
                 }),
             });
             const data = await res.json();
-            saveToken(data.token);
-            await getUserProfile(data.token); 
-            navigate("/dashboard");
+
+            if(data.message) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: data.message,
+                    showConfirmButton: false,
+                    timer: 2300
+                });
+            } else {
+                saveToken(data.token);
+                await getUserProfile(data.token); 
+                navigate("/dashboard");
+                window.location.reload();
+                getMisPublicaciones();
+            }
+
         } catch (error) {
             console.log(error); 
         } finally {
