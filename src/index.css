@@ -226,6 +226,12 @@ header a.btn-logout {
     text-decoration: none;
     display: block;
     cursor: pointer;
+    border: 1.5px solid #1D5B79;
+}
+
+header a.btn-logout:hover {
+    color: #1D5B79;
+    background-color: #fff;
 }
 
 .registro .box-iframe {

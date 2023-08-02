@@ -10,7 +10,7 @@ export default function Carrito() {
 
     return (
     <>
-    <Banner url="/images/banner-home.png" texto="Tu mascota se lo merece"/>
+    <Banner url="/images/banner-carrito.jpg" texto="Tu mascota se lo merece"/>
     <div className='container container-detalle carrito mt-5'>
     { cartItems.length === 0 ? <div className="row d-flex justify-content-center">
    <div className="col-lg-6">
