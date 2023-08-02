@@ -6,7 +6,6 @@ import '@splidejs/react-splide/css';
 import CardHome from "../components/CardHome";
 import BannerCta from "../components/BannerCta";
 
-
 export default function Home() {
     return (
         <>
@@ -43,29 +42,29 @@ export default function Home() {
                     <div className="row">
                         <CardHome 
                         url="/images/card-home-01.jpg" 
-                        titulo="Card título 01"
-                        bajada="Some quick example text to build on the card title and make up the bulk of the card's content."
-                        link="https://www.google.com/?hl=es"
+                        titulo="Accesorios"
+                        bajada="Tenemos los mejores accesorios para tu mascota, y todo con los mejores precios y promociones."
+                        link="/"
                         />
                         <CardHome 
-                        url="/images/card-home-01.jpg" 
-                        titulo="Card título 02"
-                        bajada="Some quick example text to build on the card title and make up the bulk of the card's content."
-                        link="https://www.google.com/?hl=es"
+                        url="/images/card-home-03.jpg" 
+                        titulo="Alimentación"
+                        bajada="Descubre la mejor variedad de opciones de alimentación saludable. ¡Tu mascota te lo agradecerá!"
+                        link="/"
                         />
                         <CardHome 
-                        url="/images/card-home-01.jpg" 
-                        titulo="Card título 03"
-                        bajada="Some quick example text to build on the card title and make up the bulk of the card's content."
-                        link="https://www.google.com/?hl=es"
+                        url="/images/card-home-02.jpg" 
+                        titulo="Cuidados"
+                        bajada="Brinda a tu mascota el cuidado que se merece con nuestros productos de higiene, salud y bienestar."
+                        link="/"
                         />
                     </div> 
                 </div>
             </section>
             <BannerCta 
             titulo="Patitas Pet Store"
-            bajada="Some quick example text to build on the card title and make up the bulk of the card's content."
-            link="https://www.google.com/?hl=es" 
+            bajada="Somos Patitas Pet Store, contamos con despacho express y más de 5.000 productos para hacer feliz a tu mascota."
+            link="/" 
             />
     
         </>

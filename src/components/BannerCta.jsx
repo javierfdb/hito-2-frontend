@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
- export default function BannerCta({titulo, bajada, link}) {
+export default function BannerCta({titulo, bajada, link}) {
   
     return (
         <section className="banner-cta-home">
@@ -11,7 +11,7 @@ import React, { Component } from 'react'
                             <p>{bajada}</p>
                         </div>
                         <div className="col-lg-3 box-btn">
-                            <a href={link} className="btn btn-primary btn-lg">Large button</a>
+                            <a href={link} className="btn btn-card-home btn-lg">Descubrir</a>
                         </div>
                     </div>
                 </div>

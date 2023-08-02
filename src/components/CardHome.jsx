@@ -9,7 +9,7 @@ import React, { Component } from 'react'
                 <div className="card-body">
                     <h5 className="card-title">{titulo}</h5>
                     <p className="card-text">{bajada}</p>
-                    <a href={link} className="btn btn-primary">Go somewhere</a>
+                    <a href={link} className="btn btn-card-home">Ver más</a>
                 </div>
             </div>
         </div>

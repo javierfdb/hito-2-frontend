@@ -4,6 +4,7 @@ import { useState, useContext } from 'react';
 import { TiendaContext } from "../context/TiendaContext";
 import { useNavigate } from 'react-router-dom';
 
+import Banner from "../components/Banner";
 
 export default function Registro() {
     const navigate = useNavigate();
@@ -19,7 +20,6 @@ export default function Registro() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({
                     correo,
@@ -54,6 +54,7 @@ export default function Registro() {
 
     return (
         <>
+        <Banner url="/images/banner-registro.jpg" texto="¡Genial! +1"/>
         <section className='ingresar'>
          <div className='container my-5'> 
             <div className="row justify-content-center">

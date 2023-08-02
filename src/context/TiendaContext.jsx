@@ -2,8 +2,6 @@ import React from 'react';
 import { useEffect, useState, createContext } from "react";
 import { useNavigate } from 'react-router-dom';
 
-
-
 export const TiendaContext = createContext();
 
 const initialStateToken = localStorage.getItem("token"); // esto siempre debe estar por fuera del 'tienda provider'
@@ -109,26 +107,6 @@ export default function TiendaProvider  ({children})  {
         }
     }
 
-
-    const getMisPublicaciones = async () => {
-        try {
-
-            const res  = await fetch (`${import.meta.env.VITE_API_URL}/dashboard/mis-publicaciones`,{
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            
-            const publicacionesPropias = await res.json();
-            setPublicaciones(publicacionesPropias);
-            
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const handlePrecioAsc = async () => {
         try {
             setIsLoading(true);
@@ -176,6 +154,25 @@ export default function TiendaProvider  ({children})  {
             const response = await fetch(url)
             const allProductos = await response.json();
             setProductos(allProductos);   
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getMisPublicaciones = async () => {
+        try {
+
+            const res  = await fetch (`${import.meta.env.VITE_API_URL}/dashboard/mis-publicaciones`,{
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            
+            const publicacionesPropias = await res.json();
+            setPublicaciones(publicacionesPropias);
+            
         } catch (error) {
             console.log(error)
         }
@@ -267,14 +264,14 @@ export default function TiendaProvider  ({children})  {
                 cantidad: 1
                }
                setCartItems([...cartItems, newBuenoWorker]);
-            const totalPrice = cartItems.reduce((total, item) => total + item.precio, 0);
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Producto agregado con éxito',
-                showConfirmButton: false,
-                timer: 1500
-            })
+               const totalPrice = cartItems.reduce((total, item) => total + item.precio, 0);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Producto agregado con éxito',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
         }
     }
 
@@ -321,7 +318,7 @@ export default function TiendaProvider  ({children})  {
             Swal.fire({
                 position: 'center',
                 icon: 'warning',
-                title: 'Producto ya agregado',
+                title: 'Ya estaba agregado ;)',
                 showConfirmButton: false,
                 timer: 1500
             })
@@ -341,7 +338,7 @@ export default function TiendaProvider  ({children})  {
                Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Producto agregado con éxito',
+                title: 'Agregado a tus Me Gusta',
                 showConfirmButton: false,
                 timer: 1500
             })
@@ -369,21 +366,6 @@ export default function TiendaProvider  ({children})  {
         }
        
     };
-
-
-  
-   
-
-
-    
-    
-
-
-  
-
-    
-
-    
 
     return (
         <TiendaContext.Provider value={{handleDeletePubli, isLoading, handleAlfAsc, handleAlfDesc, handlePrecioAsc, handlePrecioDesc, handleTodosPro, handleFiltroPerros, handleFiltroTop, handleFiltroGatos, handleFiltroExo, publicaciones, handleDislike, like, handleLike, handleAlerta, handleDelete, handleRestar, handleSumar, cartItems, totalPrice, handleDetallito, singleproduct, productos, handleDetalle, saveToken, token, getUserProfile, user, loading, setLoading, logout }}>

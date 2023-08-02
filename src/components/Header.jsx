@@ -3,10 +3,8 @@ import {NavLink} from 'react-router-dom';
 import { useContext, useState } from "react";
 import { TiendaContext } from "../context/TiendaContext";
 
-
-
 export default function Header() {
-    const { user, logout, cartItems, token } = useContext(TiendaContext);
+    const { user, logout, cartItems, token, handleTodosPro } = useContext(TiendaContext);
     const [isActive, setIsActive] = useState(false);
     const numberOfObjects = cartItems.length;
 
@@ -14,6 +12,10 @@ export default function Header() {
         setIsActive(!isActive); // Invierte el estado actual de isActive
     };
 
+    const handleToggleClassEspecial = () => {
+        setIsActive(!isActive); // Invierte el estado actual de isActive
+        handleTodosPro();
+    }
 
     return (
         <header>
@@ -50,7 +52,7 @@ export default function Header() {
                         <li onClick={handleToggleClass} className="nav-item">
                         <NavLink to="/" className="nav-link">Home</NavLink>
                         </li>
-                        <li onClick={handleToggleClass} className="nav-item">
+                        <li onClick={handleToggleClassEspecial} className="nav-item">
                         <NavLink to="/tienda" className="nav-link">Tienda</NavLink>
                         </li>
 

@@ -2,7 +2,6 @@ import React, { Component, useContext} from 'react';
 import { TiendaContext } from "../context/TiendaContext";
 import {NavLink} from 'react-router-dom';
 
-
 export default function Dashboard() {
 
     const { user, publicaciones, like } = useContext(TiendaContext);
@@ -11,7 +10,6 @@ export default function Dashboard() {
  
     return (
         <>
-       
         <section className="banner-interior">
             <img className="bg-banner" src="/images/banner-tienda.png" alt="banner11"/>
             <div className="texto">
@@ -47,7 +45,6 @@ export default function Dashboard() {
             </div>
         
         </div>
-
         </>
     )
 } 

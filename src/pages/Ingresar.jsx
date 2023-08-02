@@ -24,7 +24,6 @@ export default function Ingresar() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({
                     correo,
@@ -32,11 +31,27 @@ export default function Ingresar() {
                 }),
             });
             const data = await res.json();
-            if(data.message) {
+            if(data.message == "No existe el usuario") {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Credenciales incorrectas',
+                    title: 'Correo no registrado',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else if(data.message == "Contraseña incorrecta") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Contraseña incorrecta',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }  else if(data.message) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Credenciales inválidas',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -46,31 +61,23 @@ export default function Ingresar() {
                 navigate("/dashboard");
                 window.location.reload();
                 getMisPublicaciones();
-            }            
-              
+            }                 
         } catch (error) {
-            
             console.log(error);
-            
         } finally {
-            setLoading(false);
-            
+            setLoading(false); 
         }        
     };
 
-   
-
     return (
-    
     <>    
-    <Banner url="/images/banner-home.png" texto="Bienvenid@"/>
+    <Banner url="/images/banner-ingresar.jpg" texto="¡Volviste! :)"/>
      <section className='ingresar'>
          <div className='container my-5'> 
             <div className="row justify-content-center">
                 <div className="col-lg-6">
                     <div className="wrap-form">
                     <h2>Por favor ingresa tus datos</h2>
-
                     <form onSubmit={handleSubmit}>
                     <input required type="email" placeholder='Ingrese un correo' value={correo} onChange={(e) => setCorreo(e.target.value)} />
                     <input required type="password" placeholder='Ingrese su password' value={contrasena} onChange={(e) => setContrasena(e.target.value)} />

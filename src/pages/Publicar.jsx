@@ -5,7 +5,6 @@ import { TiendaContext } from "../context/TiendaContext";
 import { useNavigate } from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
 
-
 export default function Publicar() {
     const navigate = useNavigate();
     const {loading, setLoading, publicaciones, like, saveToken, getUserProfile, token} = useContext(TiendaContext);
@@ -21,7 +20,6 @@ export default function Publicar() {
     const [categoria, setCategoria] = useState("");
     const [megusta, setMegusta] = useState("");
 
-
     const handlePublicar = async (e) => {
         e.preventDefault();
         try {
@@ -30,7 +28,6 @@ export default function Publicar() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({
                     titulo,
@@ -53,8 +50,6 @@ export default function Publicar() {
         } 
 
         };
-
-
 
     return (
         <>

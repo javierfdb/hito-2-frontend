@@ -68,17 +68,11 @@ export default function MisMeGusta() {
                     </div>
             })}</>)}
 
-            
-
             </div>
             </div>
             </div>
         
         </div>
-
-        
-       
-
         </>
     )
 } 

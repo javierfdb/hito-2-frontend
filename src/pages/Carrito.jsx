@@ -40,7 +40,6 @@ export default function Carrito() {
                                         ${precio} 
                                         </p>
 
-
                                         { cantidad === 1 ? <button disabled className='mx-3 first bg-danger' onClick={() => handleRestar(id, imagen, titulo, descripcion, precio, cantidad)} ><i class="fas fa-minus"></i></button> : <button className='mx-3 first bg-danger' onClick={() => handleRestar(id, imagen, titulo, descripcion, precio, cantidad)} ><i class="fas fa-minus"></i></button> }
 
                                         <h4 className='mx-3'>{cantidad}</h4>
@@ -60,12 +59,6 @@ export default function Carrito() {
             </div>
 
     }
-
-
-
-
-
-
 
     </div>
 

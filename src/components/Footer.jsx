@@ -9,7 +9,7 @@ export default function Footer() {
                            Patitas Pet Store
                         </h6>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore vero eaque explicabo. Eos ullam corrupti eveniet optio.
+                        Contamos con un gran equipo de personas especializadas y amantes de las mascotas, puedes contar con nosotros para ofrecerte lo mejor.
                         </p>
                         </div>
                         <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">

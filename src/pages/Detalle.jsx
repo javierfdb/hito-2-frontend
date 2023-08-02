@@ -4,16 +4,10 @@ import Banner from "../components/Banner";
 import { useContext } from 'react';
 import { TiendaContext } from '../context/TiendaContext'
 
-import { useSnackbar } from 'notistack';
-
-
 export default function Detalle() {
 	
     const { singleproduct, handleDetallito, user, handleAlerta, handleLike} = useContext(TiendaContext);
 
-
-	
-    
     return (
         
         <>
