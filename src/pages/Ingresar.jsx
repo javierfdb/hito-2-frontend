@@ -79,8 +79,8 @@ export default function Ingresar() {
                     <div className="wrap-form">
                     <h2>Por favor ingresa tus datos</h2>
                     <form onSubmit={handleSubmit}>
-                    <input required type="email" placeholder='Ingrese un correo' value={correo} onChange={(e) => setCorreo(e.target.value)} />
-                    <input required type="password" placeholder='Ingrese su password' value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
+                    <input required type="email" placeholder='Ingrese un correo' value={correo} onChange={(e) => setCorreo(e.target.value.toLowerCase())} />
+                    <input required type="password" placeholder='Ingrese su password' value={contrasena} onChange={(e) => setContrasena(e.target.value.toLowerCase())} />
                         <div className="box-btn-submit">
                             <Button
                             variant="contained"
