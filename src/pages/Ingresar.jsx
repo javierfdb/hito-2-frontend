@@ -35,7 +35,7 @@ export default function Ingresar() {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Correo no registrado',
+                    title: 'Email no registrado',
                     showConfirmButton: false,
                     timer: 1500
                 });
