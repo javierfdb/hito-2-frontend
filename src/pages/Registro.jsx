@@ -63,8 +63,8 @@ export default function Registro() {
                     <h2>Por favor ingresa tus datos</h2>
 
                     <form onSubmit={handleSubmit}>
-                    <input required type="email" placeholder='Ingrese un email' value={correo} onChange={(e) => setCorreo(e.target.value.toLowerCase())} />
-                    <input required type="password" placeholder='Ingrese un password' value={contrasena} onChange={(e) => setContrasena(e.target.value.toLowerCase())} />
+                    <input required type="email" placeholder='Ingresa un email' value={correo} onChange={(e) => setCorreo(e.target.value.toLowerCase())} />
+                    <input required type="password" placeholder='Ingresa una contraseña' value={contrasena} onChange={(e) => setContrasena(e.target.value.toLowerCase())} />
                         <div className="box-btn-submit">
                             <Button
                             variant="contained"
