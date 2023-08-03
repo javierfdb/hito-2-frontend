@@ -7,18 +7,20 @@ import {NavLink} from 'react-router-dom';
 
 export default function Publicar() {
     const navigate = useNavigate();
-    const {loading, setLoading, publicaciones, like, saveToken, getUserProfile, token} = useContext(TiendaContext);
+    const {loading, setLoading, publicaciones, like, user, saveToken, getUserProfile, token} = useContext(TiendaContext);
 
     const numberOfPubli = publicaciones.length;
     const numberOfLikes = like.length;
 
     const [titulo, setTitulo] = useState("");
     const [descripcion, setDescripcion] = useState("");
-    const [correo, setCorreo] = useState("");
+    const [correo, setCorreo] = useState(user[0].correo);
     const [imagen, setImagen] = useState("");
     const [precio, setPrecio] = useState("");
     const [categoria, setCategoria] = useState("");
-    const [megusta, setMegusta] = useState("");
+    const [megusta, setMegusta] = useState("False");
+
+   
 
     const handlePublicar = async (e) => {
         e.preventDefault();
@@ -77,18 +79,27 @@ export default function Publicar() {
             <div className="col-lg-10">
             <div className="row">
             <div className="publicar wrap-form">
-                    <h2>Ingresa un producto</h2>
+                    <h2 className='mb-3'>Ingresa un producto</h2>
                     <form onSubmit={handlePublicar}>
                         <div className="box-form">
-                        <input required type="text" placeholder='Ingrese un titulo' value={titulo} onChange={(e) => setTitulo(e.target.value)} />
-                        <input required type="text" placeholder='Ingresa una descripción' value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
-                        <input required type="email" placeholder='Ingrese un email' value={correo} onChange={(e) => setCorreo(e.target.value)} />
-                        <input required type="text" placeholder='Link imagen' value={imagen} onChange={(e) => setImagen(e.target.value)} />
+                        <input required type="text" placeholder='Ingresa un título' value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+
+                        <input required type="text" placeholder='Url de la imagen' value={imagen} onChange={(e) => setImagen(e.target.value)} />
+
                         <input required type="text" placeholder='Ingresa un precio' value={precio} onChange={(e) => setPrecio(e.target.value)} />
-                        <input required type="text" placeholder='Categoria' value={categoria} onChange={(e) => setCategoria(e.target.value)} />
-                        
-                        <input required type="text" placeholder='Like'  value={megusta} onChange={(e) => setMegusta(e.target.value)} />
-                        <div className="box-btn-submit">
+
+                        <select required name="" id="" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+                            <option value="">Selecciona una categoría</option>
+                            <option value="Top de ventas">Top de ventas</option>
+                            <option value="Perros">Perros</option>
+                            <option value="Gatos">Gatos</option>
+                            <option value="Animales éxoticos">Animales éxoticos</option>
+                        </select>
+
+                        <textarea required type="text" placeholder='Ingresa una descripción' value={descripcion} onChange={(e) => setDescripcion(e.target.value)} ></textarea>
+
+                       
+                        <div className="box-btn-submit mt-2">
                             <Button
                                 variant="contained"
                                 color="primary"

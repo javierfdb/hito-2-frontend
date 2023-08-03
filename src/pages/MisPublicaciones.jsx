@@ -40,7 +40,7 @@ export default function MisPublicaciones() {
       <h4 className='text-center mb-3'>Nada por acá aún.</h4>
       <figure> <img className='w-100' src="/images/empty-mis-publicaciones.png" alt="Patitas Pet Store" /></figure>
 
-      <div class="box-btn-comprar">
+      <div className="box-btn-comprar">
         <NavLink to="/dashboard/publicar" className="nav-link btn btn-comprar">Ir a publicar</NavLink>
      </div>
    </div>) : (<>{publicaciones.map((item) => {

@@ -320,7 +320,8 @@ header a.btn-logout:hover {
   
 }
 
-.publicar form .box-form input {
+.publicar form .box-form input,
+.publicar form .box-form textarea {
   margin-bottom: 1.2rem;
     display: block;
     width: 100%;
@@ -337,6 +338,28 @@ header a.btn-logout:hover {
     appearance: none;
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.publicar form .box-form select {
+  margin-bottom: 1.2rem;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.65rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.publicar form .box-form textarea {
+  min-height: 100px;
+  max-height: 200px;
+  width: 100%;
+  min-width: 100%;
+  margin-bottom: .8rem;
 }
 
 .mis-publicaciones .card {
